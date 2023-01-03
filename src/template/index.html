@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Metro Dx</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+    <h1 class="text-center">Cancer Classifier</h1>
+    <form class="p-3 text-center" action="/", method="post", enctype="multipart/form-data">
+        <input class="form control" type="file" name="csvfile" multiple>
+        <div>
+            <input class="btn btn-primary mt-3" type="submit" value="predict cancer">
+        </div>
+    </form>
+    {% if table_data%}
+    <div id="display_table">
+        <table class="cell-border" >
+        <thead>
+            <tr>
+                <th>File name</th>
+                <th>Prediction</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for path, pred in table_data %}
+            <tr>
+                <td>{{path}}</td>
+                <td>{{pred}}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+        </table>
+    </div>
+    {% endif %}
+</body>
+</html>
